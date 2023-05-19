@@ -58,22 +58,22 @@ S2[int(0.75*numOfSamples):numOfSamples] = -1
 plt.figure(1)
 plt.plot(timeAxis, S1, linewidth=2)
 plt.xlabel("time")
-plt.ylabel("S1")
+plt.ylabel("S1(t)")
 # later change them
 plt.vlines(x=0, ymin=0, ymax=1)
 plt.vlines(x=1, ymin=0, ymax=1)
-plt.title('S1')
+plt.title('S1(t)')
 plt.legend()
 
 # plot s2(t) vs time
 plt.figure(2)
 plt.plot(timeAxis, S2, linewidth=2)
 plt.xlabel("time")
-plt.ylabel("S2")
+plt.ylabel("S2(t)")
 # later change them
 plt.vlines(x=0, ymin=0, ymax=1)
 plt.vlines(x=1, ymin=-1, ymax=0)
-plt.title('S2')
+plt.title('S2(t)')
 plt.legend()
 
 # get the bases functions of s1(t) & s2(t)
@@ -84,9 +84,9 @@ plt.figure(3)
 plt.plot(timeAxis, Phi1, linewidth=2)
 plt.vlines(x=0, ymin=0, ymax=1)
 plt.vlines(x=1, ymin=0, ymax=1)
-plt.title('Gram-Schmidt For S1')
+plt.title('Gram-Schmidt For S1(t)')
 plt.xlabel("time")
-plt.ylabel("Phi1")
+plt.ylabel("Phi1(t)")
 plt.legend()
 
 # plot Phi2 vs time
@@ -94,9 +94,9 @@ plt.figure(4)
 plt.plot(timeAxis, Phi2, linewidth=2)
 plt.vlines(x=0, ymin=0, ymax=Phi2[0])
 plt.vlines(x=1, ymin=Phi2[numOfSamples-1], ymax=0)
-plt.title('Gram-Schmidt For S2')
+plt.title('Gram-Schmidt For S2(t)')
 plt.xlabel("time")
-plt.ylabel("Phi2")
+plt.ylabel("Phi2(t)")
 plt.legend()
 plt.show()
 
@@ -109,8 +109,8 @@ plt.figure(5)
 plt.scatter(V11,V12, label='S1', c='g')
 plt.scatter(V21,V22 , label='S2', c='y')
 plt.title('Signal space')
-plt.xlabel("phi1")
-plt.ylabel("phi2")
+plt.xlabel("Phi1(t)")
+plt.ylabel("Phi2(t)")
 plt.legend()
 plt.show()
 
@@ -123,8 +123,8 @@ for EOverSigma2_db in EOverSigma2_db_arr:
     
     # plot noise signal Phit1 vs Phi2
     plt.title('Noise ('+str(EOverSigma2_db)+')dB')
-    plt.xlabel("Phi1")
-    plt.ylabel("Phi2")
+    plt.xlabel("Phi1(t)")
+    plt.ylabel("Phi2(t)")
     # for loop 50 times for random noise samples
     for i in range(50):
         
