@@ -28,8 +28,9 @@ def applyConvolution(noisySamples, receivedFilterValues):
 def calculateBERSimulated(bits, recievedBits):
     # applying lamda thresholed (lamda optimum = 0)
     receivedSamples = np.ones(numOfBits)
-    # later why * -2
-    receivedSamples += (-2 * (recievedBits < 0))
+    # Done later why * -2
+    # receivedSamples += (-2 * (recievedBits < 0))
+    receivedSamples = np.sign(recievedBits)
     # receivedSamples = (np.real(recievedBits) < 0).astype(int)
     # calculate probability of error
     error_probability = np.sum(receivedSamples != bits)
