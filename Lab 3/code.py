@@ -38,8 +38,8 @@ def Signal_Space(S, Phi1, Phi2):
     # later divide on numOfSamples or not
     # just difference on scaling
     # calculate the signal space representation
-    V1 = np.sum(S * Phi1)
-    V2 = np.sum(S * Phi2)
+    V1 = np.sum(S * Phi1) 
+    V2 = np.sum(S * Phi2) 
 
     return V1, V2
 
