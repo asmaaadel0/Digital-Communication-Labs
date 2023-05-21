@@ -8,12 +8,13 @@ import matplotlib.pyplot as plt
 ###########################################################
 ############## Gram-Schmidt Orthogonalization #############
 ###########################################################
+
+
 def Gram_Schmidt(S1, S2):
 
     # later check is it ok or abs(s1)**2
-    # Energy1 = np.sum(S1 ** 2)
     # calculate the energy of the s1(t)
-    Energy1 = abs(S1)**2
+    Energy1 = np.sum(S1 ** 2) / numOfSamples
     # calculate Gram-Schmidt base function Phi1
     Phi1 = S1 / np.sqrt(Energy1)
     # later divide on numOfSamples or not
@@ -106,33 +107,33 @@ V21, V22 = Signal_Space(S2, Phi1, Phi2)
 
 # Plot the signal space representation
 plt.figure(5)
-plt.scatter(V11,V12, label='S1', c='g')
-plt.scatter(V21,V22 , label='S2', c='y')
+plt.scatter(V11, V12, label='S1', c='g')
+plt.scatter(V21, V22, label='S2', c='y')
 plt.title('Signal space')
 plt.xlabel("Phi1(t)")
 plt.ylabel("Phi2(t)")
 plt.legend()
 plt.show()
 
-# generate E/σ2 array in db 
+# generate E/σ2 array in db
 EOverSigma2_db_arr = [-5, 0, 10]
 E = 1  # as energy for S1, S2 = 1
 
-# for loop for each element in E/σ2 array 
+# for loop for each element in E/σ2 array
 for EOverSigma2_db in EOverSigma2_db_arr:
-    
+
     # plot noise signal Phit1 vs Phi2
     plt.title('Noise ('+str(EOverSigma2_db)+')dB')
     plt.xlabel("Phi1(t)")
     plt.ylabel("Phi2(t)")
     # for loop 50 times for random noise samples
     for i in range(50):
-        
+
         # calculate standard deviation
         standardDev = E/(10**(EOverSigma2_db/10))
         # generate random noise samples
         W = np.random.normal(0, np.sqrt(standardDev), numOfSamples)
-        
+
         # add noise for signals
         r1 = S1 + W
         r2 = S2 + W
@@ -140,7 +141,7 @@ for EOverSigma2_db in EOverSigma2_db_arr:
         # get the signal space representation of r1(t) & r2(t)
         V11_Req_3, V12_Req_3 = Signal_Space(r1, Phi1, Phi2)
         V21_Req_3, V22_Req_3 = Signal_Space(r2, Phi1, Phi2)
-        
+
         # plot the signal space representation
         plt.scatter(V11_Req_3, V12_Req_3, c='g')
         plt.scatter(V21_Req_3, V22_Req_3, c='y')
