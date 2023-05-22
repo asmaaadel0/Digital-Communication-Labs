@@ -1,9 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# later req 4
-# documantation
-# report
+# later theoretical analysis
 
 ###########################################################
 ############## Gram-Schmidt Orthogonalization #############
@@ -38,8 +36,8 @@ def Signal_Space(S, Phi1, Phi2):
     # later divide on numOfSamples or not
     # just difference on scaling
     # calculate the signal space representation
-    V1 = np.sum(S * Phi1) 
-    V2 = np.sum(S * Phi2) 
+    V1 = np.sum(S * Phi1) / numOfSamples
+    V2 = np.sum(S * Phi2) / numOfSamples
 
     return V1, V2
 
@@ -85,7 +83,7 @@ plt.figure(3)
 plt.plot(timeAxis, Phi1, linewidth=2)
 plt.vlines(x=0, ymin=0, ymax=1)
 plt.vlines(x=1, ymin=0, ymax=1)
-plt.title('Gram-Schmidt For S1(t)')
+plt.title('Phi1')
 plt.xlabel("time")
 plt.ylabel("Phi1(t)")
 plt.legend()
@@ -95,7 +93,7 @@ plt.figure(4)
 plt.plot(timeAxis, Phi2, linewidth=2)
 plt.vlines(x=0, ymin=0, ymax=Phi2[0])
 plt.vlines(x=1, ymin=Phi2[numOfSamples-1], ymax=0)
-plt.title('Gram-Schmidt For S2(t)')
+plt.title('Phi2')
 plt.xlabel("time")
 plt.ylabel("Phi2(t)")
 plt.legend()
