@@ -127,6 +127,10 @@ for EOverSigma2_db in EOverSigma2_db_arr:
     plt.title('Noise ('+str(EOverSigma2_db)+')dB')
     plt.xlabel("Phi1(t)")
     plt.ylabel("Phi2(t)")
+    
+    #plot the real ones 
+    plt.scatter(V11, V12, c='r')
+    plt.scatter(V21, V22, c='b')
     # for loop 50 times for random noise samples
     for i in range(50):
 
@@ -144,9 +148,7 @@ for EOverSigma2_db in EOverSigma2_db_arr:
         V21_Req_3, V22_Req_3 = Signal_Space(r2, Phi1, Phi2)
 
         # plot the signal space representation
-        plt.scatter(V11_Req_3, V12_Req_3, c='g')
-        plt.scatter(V21_Req_3, V22_Req_3, c='y')
-    plt.scatter(V11, V12, c='r')
-    plt.scatter(V21, V22, c='b')
-    plt.legend(["r1", "r2"])
+        plt.scatter(V11_Req_3, V12_Req_3,facecolors='none',edgecolors='g')
+        plt.scatter(V21_Req_3, V22_Req_3, facecolors='none',edgecolors='y')
+    plt.legend(["real s1", "real s2","r1", "r2"])
     plt.show()
