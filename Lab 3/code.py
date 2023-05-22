@@ -10,21 +10,24 @@ import matplotlib.pyplot as plt
 
 def Gram_Schmidt(S1, S2):
 
-    # later check is it ok or abs(s1)**2
     # calculate the energy of the s1(t)
-    Energy1 = np.sum(S1 ** 2) / numOfSamples
+    Energy1 = np.sum(S1 ** 2) 
+    
     # calculate Gram-Schmidt base function Phi1
     Phi1 = S1 / np.sqrt(Energy1)
-    # later divide on numOfSamples or not
+    Phi1 *= np.sqrt(numOfSamples)
+    
+    # calculate the projection of S2 on phi1
     S21 = np.sum(S2 * Phi1) / numOfSamples
-    # calculate Gram-Schmidt second orthogonalized
     g2 = S2 - S21 * Phi1
-    # later divide on numOfSamples or not
-    # calculate the energy of the s2(t)
-    Energy2 = np.sum(g2 ** 2) / numOfSamples
+    # calculate the energy of the g2(t)
+    Energy2 = np.sum(g2 ** 2) 
     # calculate Gram-Schmidt base function Phi2
     Phi2 = g2 / np.sqrt(Energy2)
-
+    Phi2 *= np.sqrt(numOfSamples)
+#     print("energy")
+#     print(np.sqrt(np.sum(Phi2 ** 2) / numOfSamples))
+#     print(np.sqrt(np.sum(Phi1 ** 2) / numOfSamples))
     return Phi1, Phi2
 
 
@@ -143,6 +146,7 @@ for EOverSigma2_db in EOverSigma2_db_arr:
         # plot the signal space representation
         plt.scatter(V11_Req_3, V12_Req_3, c='g')
         plt.scatter(V21_Req_3, V22_Req_3, c='y')
-
+    plt.scatter(V11, V12, c='r')
+    plt.scatter(V21, V22, c='b')
     plt.legend(["r1", "r2"])
     plt.show()
