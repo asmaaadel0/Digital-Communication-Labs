@@ -108,8 +108,10 @@ V21, V22 = Signal_Space(S2, Phi1, Phi2)
 
 # Plot the signal space representation
 plt.figure(5)
-plt.scatter(V11, V12, label='S1', c='g')
-plt.scatter(V21, V22, label='S2', c='y')
+plt.scatter(V11, V12, label='S1', c='r')
+plt.scatter(V21, V22, label='S2', c='b')
+plt.plot([0, V11], [0, V12], 'r')
+plt.plot([0, V21], [0, V22], 'b')
 plt.title('Signal space')
 plt.xlabel("Phi1(t)")
 plt.ylabel("Phi2(t)")
